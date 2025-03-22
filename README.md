@@ -2,6 +2,25 @@
 
 A fitness platform where users can sign up, browse fitness classes or personal training sessions led by Iranian instructors, book sessions, and access content either live or pre-recorded. The platform offers a culturally relevant experience with Persian (Farsi) language support, workouts tailored to local preferences, and content that resonates with Iranian users.
 
+<div dir="rtl" lang="fa">
+
+## توضیحات به زبان فارسی
+
+پلتفرم تناسب اندام «پرشین پالس» یک پلتفرم جامع است که در آن کاربران می‌توانند ثبت نام کنند، کلاس‌های تناسب اندام یا جلسات تمرین شخصی با مربیان ایرانی را مرور کنند، جلسات را رزرو کنند و به محتوا به صورت زنده یا پیش‌ضبط شده دسترسی داشته باشند.
+
+این پلتفرم یک تجربه فرهنگی مرتبط با پشتیبانی از زبان فارسی، تمرینات متناسب با ترجیحات محلی و محتوایی که با کاربران ایرانی هم‌خوانی دارد، ارائه می‌دهد.
+
+### ویژگی‌های اصلی:
+- ثبت نام و پروفایل کاربران
+- پروفایل‌های اختصاصی مربیان
+- مدیریت کلاس‌های تناسب اندام
+- پشتیبانی از کلاس‌های زنده و پیش‌ضبط شده
+- سیستم رزرو بر اساس تقویم
+- جستجو و فیلتر کلاس‌ها بر اساس دسته‌بندی‌ها، سطوح دشواری یا مربیان
+- احراز هویت و دسترسی کاربران
+
+</div>
+
 ## Table of Contents
 
 - [Features](#features)
