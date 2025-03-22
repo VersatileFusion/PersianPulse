@@ -1,4 +1,4 @@
-# Iranian Fitness Platform
+# Iranian Fitness Platform | پلتفرم تناسب اندام ایرانیان
 
 A fitness platform where users can sign up, browse fitness classes or personal training sessions led by Iranian instructors, book sessions, and access content either live or pre-recorded. The platform offers a culturally relevant experience with Persian (Farsi) language support, workouts tailored to local preferences, and content that resonates with Iranian users.
 
@@ -18,6 +18,172 @@ A fitness platform where users can sign up, browse fitness classes or personal t
 - سیستم رزرو بر اساس تقویم
 - جستجو و فیلتر کلاس‌ها بر اساس دسته‌بندی‌ها، سطوح دشواری یا مربیان
 - احراز هویت و دسترسی کاربران
+
+## فهرست مطالب
+
+- [ویژگی‌ها](#ویژگی‌ها)
+- [تکنولوژی‌های مورد استفاده](#تکنولوژی‌های-مورد-استفاده)
+- [مستندات API](#مستندات-api)
+- [شروع به کار](#شروع-به-کار)
+  - [پیش‌نیازها](#پیش‌نیازها)
+  - [نصب و راه‌اندازی](#نصب-و-راه‌اندازی)
+  - [متغیرهای محیطی](#متغیرهای-محیطی)
+- [نقطه پایانی‌های API](#نقطه-پایانی‌های-api)
+- [ساختار پروژه](#ساختار-پروژه)
+- [لاگ‌ها](#لاگ‌ها)
+- [بهبودهای آینده](#بهبودهای-آینده)
+- [مشارکت](#مشارکت)
+- [مجوز](#مجوز)
+- [تماس با ما](#تماس-با-ما)
+
+## ویژگی‌ها
+
+- **ثبت نام و پروفایل کاربران**: کاربران می‌توانند ثبت نام کنند، وارد شوند و پروفایل خود را مدیریت کنند
+- **پروفایل‌های مربیان**: مربیان دارای پروفایل‌های منحصر به فرد هستند که تخصص، تجربه و نظرات کاربران را برجسته می‌کند
+- **مدیریت کلاس**: ایجاد، مدیریت و رزرو کلاس‌های تناسب اندام
+- **انواع کلاس**: پشتیبانی از کلاس‌های زنده و پیش‌ضبط شده
+- **سیستم رزرو**: سیستم رزرو کلاس مبتنی بر تقویم
+- **جستجو و فیلتر**: یافتن کلاس‌ها بر اساس دسته‌بندی‌ها، سطوح دشواری یا مربیان
+- **احراز هویت و مجوز**: کنترل دسترسی مبتنی بر نقش امن
+
+## تکنولوژی‌های مورد استفاده
+
+- **بک‌اند**: Node.js، Express.js
+- **پایگاه داده**: MongoDB با Mongoose
+- **احراز هویت**: JWT (توکن‌های وب JSON)
+- **مستندات**: Swagger/OpenAPI
+- **لاگینگ**: Winston و Morgan
+- **میزبانی ابری**: [در دست تعیین]
+
+## مستندات API
+
+مستندات API از طریق رابط کاربری Swagger در نقطه پایانی `/api-docs` هنگام اجرای سرور در دسترس است.
+
+## شروع به کار
+
+### پیش‌نیازها
+
+- Node.js (نسخه ۱۴ یا بالاتر)
+- MongoDB (محلی یا Atlas)
+- npm یا yarn
+
+### نصب و راه‌اندازی
+
+۱. کلون کردن مخزن:
+   ```bash
+   git clone https://github.com/yourusername/fitness-platform.git
+   cd fitness-platform
+   ```
+
+۲. نصب وابستگی‌ها:
+   ```bash
+   npm install
+   ```
+
+۳. تنظیم متغیرهای محیطی:
+   - کپی `.env.example` به `.env`
+   - تغییر مقادیر بر اساس نیاز
+
+۴. شروع سرور:
+   ```bash
+   # حالت توسعه
+   npm run dev
+   
+   # حالت تولید
+   npm start
+   ```
+
+### متغیرهای محیطی
+
+| نام متغیر | توضیحات | مقدار پیش‌فرض |
+|-----------|---------|--------------|
+| NODE_ENV | محیط (development/production) | development |
+| PORT | پورت سرور | 5000 |
+| MONGO_URI | رشته اتصال MongoDB | mongodb://localhost:27017/fitness-platform |
+| JWT_SECRET | کلید مخفی برای JWT | - |
+| JWT_ACCESS_EXPIRE | دوره انقضای توکن دسترسی | 15m |
+| JWT_REFRESH_EXPIRE | دوره انقضای توکن تازه‌سازی (روز) | 30 |
+| JWT_COOKIE_EXPIRE | انقضای کوکی JWT (روز) | 30 |
+
+## نقطه پایانی‌های API
+
+### کاربران
+
+- `GET /api/users` - دریافت همه کاربران
+- `GET /api/users/:id` - دریافت کاربر با شناسه
+- `POST /api/users` - ایجاد کاربر جدید
+- `PUT /api/users/:id` - به‌روزرسانی کاربر
+- `DELETE /api/users/:id` - حذف کاربر
+
+### مربیان
+
+- `GET /api/instructors` - دریافت همه مربیان
+- `GET /api/instructors/:id` - دریافت مربی با شناسه
+- `POST /api/instructors` - ایجاد پروفایل مربی جدید
+- `PUT /api/instructors/:id` - به‌روزرسانی پروفایل مربی
+- `DELETE /api/instructors/:id` - حذف پروفایل مربی
+
+### کلاس‌ها
+
+- `GET /api/classes` - دریافت همه کلاس‌ها (با فیلترها)
+- `GET /api/classes/:id` - دریافت کلاس با شناسه
+- `POST /api/classes` - ایجاد کلاس جدید
+- `PUT /api/classes/:id` - به‌روزرسانی کلاس
+- `DELETE /api/classes/:id` - حذف کلاس
+- `POST /api/classes/:id/enroll` - ثبت‌نام کاربر در کلاس
+
+## ساختار پروژه
+
+```
+fitness-platform/
+│
+├── src/                  # فایل‌های منبع
+│   ├── config/           # تنظیمات پیکربندی
+│   ├── controllers/      # کنترلرهای مسیر
+│   ├── middlewares/      # میان‌افزارهای سفارشی
+│   ├── models/           # مدل‌های Mongoose
+│   └── routes/           # مسیرهای API
+│
+├── logs/                 # لاگ‌های برنامه
+├── .env                  # متغیرهای محیطی
+├── .env.example          # نمونه متغیرهای محیطی
+├── .gitignore            # فایل نادیده گرفتن Git
+├── package.json          # فایل NPM پکیج
+├── server.js             # نقطه ورودی
+└── README.md             # مستندات پروژه
+```
+
+## لاگ‌ها
+
+لاگ‌های برنامه در دایرکتوری `logs` ذخیره می‌شوند:
+- `combined.log` - همه لاگ‌ها
+- `error.log` - فقط لاگ‌های خطا
+
+## بهبودهای آینده
+
+- پیاده‌سازی فرانت‌اند
+- ادغام با درگاه‌های پرداخت محلی ایرانی
+- سیستم اطلاع‌رسانی
+- قابلیت‌های پخش زنده
+- توسعه اپلیکیشن موبایل
+- داشبورد تحلیلی برای مربیان
+- سیستم نظرات و امتیازدهی
+
+## مشارکت
+
+۱. فورک کردن مخزن
+۲. ایجاد شاخه ویژگی (`git checkout -b feature/amazing-feature`)
+۳. کامیت تغییرات (`git commit -m 'Add some amazing feature'`)
+۴. پوش به شاخه (`git push origin feature/amazing-feature`)
+۵. باز کردن یک Pull Request
+
+## مجوز
+
+این پروژه تحت مجوز MIT منتشر شده است.
+
+## تماس با ما
+
+عرفان احمدوند - ۹۱۰۹۹۲۴۷۰۷ ۹۸+
 
 </div>
 
@@ -102,7 +268,8 @@ API documentation is available via Swagger UI at `/api-docs` endpoint when the s
 | PORT | Server port | 5000 |
 | MONGO_URI | MongoDB connection string | mongodb://localhost:27017/fitness-platform |
 | JWT_SECRET | Secret key for JWT | - |
-| JWT_EXPIRE | JWT expiration period | 30d |
+| JWT_ACCESS_EXPIRE | JWT access token expiration | 15m |
+| JWT_REFRESH_EXPIRE | JWT refresh token expiration (days) | 30 |
 | JWT_COOKIE_EXPIRE | JWT cookie expiration (days) | 30 |
 
 ## API Endpoints
