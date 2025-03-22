@@ -164,6 +164,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-Erfan Ahmadvand - +98 9109924707 - erfan.ahmadvand98@gmail.com
-
-Project Link: [https://github.com/erfan-ahmadvand/persian-pulse](https://github.com/erfan-ahmadvand/persian-pulse) 
+Erfan Ahmadvand - +98 9109924707 
